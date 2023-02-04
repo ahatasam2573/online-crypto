@@ -1,10 +1,11 @@
 import { Heading, Image, Text, VStack } from '@chakra-ui/react'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const ExchangeCard = ({ name, img, rank, url }) => {
+const CoinCard = ({ id, name, price, img, symbol, currencySymbol = "৳" }) => {
     return (
-        <a href={url} target={"blank"} >
-            <VStack boxSize={"180px"} w={"52"} shadow={"xl"} p={"8"} borderRadius={"lg"} transition={"all 0.5s"}
+        <Link to={`/coin/${id}`}>
+            <VStack boxSize={"205px"} w={"52"} shadow={"xl"} p={"8"} borderRadius={"lg"} transition={"all 0.5s"}
                 m={"4"}
                 css={
                     {
@@ -25,13 +26,14 @@ const ExchangeCard = ({ name, img, rank, url }) => {
                     size={"md"}
                     noOfLines={1}
                 >
-                    {rank}
+                    {symbol}
                 </Heading>
 
                 <Text noOfLines={1}>{name.substring(0, 8)}</Text>
+                <Text noOfLines={1}>{price ? `${currencySymbol}${price}` : "NA"}</Text>
             </VStack>
-        </a >
+        </Link >
     )
 }
 
-export default ExchangeCard;
+export default CoinCard;
