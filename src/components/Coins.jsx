@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 import { server } from '../index';
 import CoinCard from './CoinCard';
 import Error from './Error';
-import ExchangeCard from './ExchangeCard';
 import Loader from './Loader';
 
 const Coins = () => {
@@ -37,7 +36,7 @@ const Coins = () => {
         fetchCoins();
     }, [currency, page])
 
-    if (error) return <Error message="Showing problems for fetching coins" />
+    if (error) return <Error message="Error problems for fetching coins" />
 
     else {
         return (

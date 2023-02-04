@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { server } from '../index';
-import { Center, Container, HStack, TableContainer } from '@chakra-ui/react';
+import { Container, HStack, TableContainer } from '@chakra-ui/react';
 import Loader from './Loader';
 import ExchangeCard from './ExchangeCard';
 import Error from './Error';
@@ -28,8 +28,8 @@ const Exchanges = () => {
 
     else {
         return (
-            <TableContainer maxW={"container.xl"} m={7} p={5}>
-                {/* <Center w={"1080px"} ml={"90px"}> */}
+            <Container maxW={"container.xl"} m={7} p={5}>
+
                 {
                     loading ? <Loader /> : <>
                         <HStack wrap={"wrap"} >
@@ -49,8 +49,7 @@ const Exchanges = () => {
 
                     </>
                 }
-                {/* </Center> */}
-            </TableContainer >
+            </Container >
         )
     }
 }
