@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { server } from '../index';
-import { Center, Container, HStack } from '@chakra-ui/react';
+import { Center, Container, HStack, TableContainer } from '@chakra-ui/react';
 import Loader from './Loader';
 import ExchangeCard from './ExchangeCard';
 import Error from './Error';
@@ -28,29 +28,29 @@ const Exchanges = () => {
 
     else {
         return (
-            <Container maxW={"container.xl"}>
-                <Center w={"1080px"} ml={"90px"}>
-                    {
-                        loading ? <Loader /> : <>
-                            <HStack wrap={"wrap"} >
-                                {
-                                    exchanges.map(i => (
+            <TableContainer maxW={"container.xl"} m={7} p={5}>
+                {/* <Center w={"1080px"} ml={"90px"}> */}
+                {
+                    loading ? <Loader /> : <>
+                        <HStack wrap={"wrap"} >
+                            {
+                                exchanges.map(i => (
 
-                                        <ExchangeCard
-                                            key={i.id}
-                                            name={i.name}
-                                            img={i.image}
-                                            rank={i.trust_score_rank}
-                                            url={i.url}
-                                        />
-                                    ))
-                                }
-                            </HStack>
+                                    <ExchangeCard
+                                        key={i.id}
+                                        name={i.name}
+                                        img={i.image}
+                                        rank={i.trust_score_rank}
+                                        url={i.url}
+                                    />
+                                ))
+                            }
+                        </HStack>
 
-                        </>
-                    }
-                </Center>
-            </Container >
+                    </>
+                }
+                {/* </Center> */}
+            </TableContainer >
         )
     }
 }
